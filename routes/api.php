@@ -21,4 +21,6 @@ Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
 //This is located in app/Http/Controllers
 
 Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
-//This is located in app/Http/Controllers
+//Makes test account
+
+Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
