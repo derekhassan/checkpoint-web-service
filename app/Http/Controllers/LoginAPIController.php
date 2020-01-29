@@ -42,8 +42,6 @@ class LoginAPIController extends Controller
         $user->password = md5("password");
 
         $user->save();
-        
-
 
     }
 
@@ -81,11 +79,7 @@ class LoginAPIController extends Controller
                 "message"=> $user->id
             ];
 
-        }
-
-
-
-
-    }   
+        }   
+    }
 
 }

@@ -24,3 +24,5 @@ Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
 //Makes test account
 
 Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
+
+Route::middleware('api')->get('/auth/makeqrcode', 'QRCodeController@makeQRCode');

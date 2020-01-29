@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/createcoupon', 'PagesController@createcoupon');
+
+Route::resource('qrcode', 'QRCodeController'); //can now reference functions like qrcode.store
