@@ -43,4 +43,13 @@ class QRCodeController extends Controller
         return redirect('/createcoupon')->with('success', 'Coupon Created');
 
     }
+
+    public function getQRInfo()
+    {
+        $id = request()->input("id");
+        $qrcode = QRCode::find($id);
+        //return view('posts.show')->with('post', $post);
+        return $qrcode;
+    }
+
 }
