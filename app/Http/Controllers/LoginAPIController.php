@@ -81,5 +81,24 @@ class LoginAPIController extends Controller
 
         }   
     }
+    public function getUserbyId() {
+        $id = request()->input("id");
+        $user = User::where("id", $id)->first();
 
+        if($user) {
+            return [
+                "status"=> 1,
+                "name"=> $user->name,
+                "email"=>$user->email
+            ];
+        } else {
+            return [
+                "status"=> 0,
+                "message"=> "Could not find requested ID"
+            ];     
+        }
+
+
+
+    }
 }
