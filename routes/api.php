@@ -16,20 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
-=======
-
-Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
-//This is located in app/Http/Controllers
-
-Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
-//Makes test account
-
-Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
-
-Route::middleware('api')->get('/auth/getuser', 'LoginAPIController@getUserbyId');
-
-Route::middleware('api')->get('/auth/makeqrcode', 'QRCodeController@makeQRCode');
-
-Route::middleware('api')->get('/auth/getqrcode', 'QRCodeController@getQRInfo');
->>>>>>> logintest
