@@ -23,6 +23,8 @@ Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
 Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
 //Makes test account
 
+Route::middleware('api')->post('/auth/createtransaction', 'TransactionController@createTransaction');
+
 Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
 
 Route::middleware('api')->get('/auth/getuser', 'LoginAPIController@getUserbyId');

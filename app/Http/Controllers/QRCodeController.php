@@ -1,5 +1,4 @@
 <?php
-//JUSh was here
 namespace App\Http\Controllers;
 use App\QRCode;
 
