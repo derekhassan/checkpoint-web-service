@@ -97,8 +97,5 @@ class LoginAPIController extends Controller
                 "message"=> "Could not find requested ID"
             ];     
         }
-
-
-
     }
 }

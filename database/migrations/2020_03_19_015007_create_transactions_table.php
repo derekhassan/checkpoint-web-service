@@ -18,11 +18,11 @@ class CreateTransactionsTable extends Migration
             $table->timestamps();
             $table->bigInteger('user_shared_id')->unsigned();
             $table->bigInteger('user_received_id')->unsigned();
-            $table->integer('qr_id');
+            $table->bigInteger('coupon_id')->unsigned();
 
             $table->foreign('user_shared_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('user_received_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('qr_id')->references('qrid')->on('qrCode')->onDelete('cascade');
+            $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('cascade');
         });
     }
 
