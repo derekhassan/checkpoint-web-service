@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Http\Controllers;
-use App\QRCode;
 
 use Illuminate\Http\Request;
+use App\Coupon;
 
-class QRCodeController extends Controller
+class CouponController extends Controller
 {
-        public function makeQRCode() {
+    public function makeQRCode() {
         
-        $qrcode = new QRCode;
+        $qrcode = new Coupon;
 
         //$qrcode->qrid = 1;
         $qrcode->percentage = 10;
@@ -32,7 +33,7 @@ class QRCodeController extends Controller
             'cap' => 'required',
         ]);
 
-        $qrcode = new QRCode;
+        $qrcode = new Coupon;
         $qrcode->percentage = $request->input('percentage');
         $qrcode->cap = 20;
         $qrcode->busID = 1;
@@ -46,9 +47,8 @@ class QRCodeController extends Controller
     public function getQRInfo()
     {
         $id = request()->input("id");
-        $qrcode = QRCode::find($id);
+        $qrcode = Coupon::find($id);
         //return view('posts.show')->with('post', $post);
         return $qrcode;
     }
-
 }

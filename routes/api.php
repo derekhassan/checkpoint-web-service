@@ -29,6 +29,6 @@ Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
 
 Route::middleware('api')->get('/auth/getuser', 'LoginAPIController@getUserbyId');
 
-Route::middleware('api')->get('/auth/makeqrcode', 'QRCodeController@makeQRCode');
+Route::middleware('api')->get('/auth/makeqrcode', 'CouponController@makeQRCode');
 
-Route::middleware('api')->get('/auth/getqrcode', 'QRCodeController@getQRInfo');
+Route::middleware('api')->get('/auth/getqrcode', 'CouponController@getQRInfo');
