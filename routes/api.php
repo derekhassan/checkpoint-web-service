@@ -23,10 +23,14 @@ Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
 Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
 //Makes test account
 
-Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
+Route::middleware('api')->post('/auth/createtransaction', 'TransactionController@createTransaction');
+Route::middleware('api')->get('/auth/findtransaction', 'TransactionController@findTransaction');
 
+Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
 Route::middleware('api')->get('/auth/getuser', 'LoginAPIController@getUserbyId');
 
-Route::middleware('api')->get('/auth/makeqrcode', 'QRCodeController@makeQRCode');
+Route::middleware('api')->get('/auth/makeqrcode', 'CouponController@makeQRCode');
+Route::middleware('api')->get('/auth/getqrcode', 'CouponController@getQRInfo');
+Route::middleware('api')->post('/auth/createcoupon', 'CouponController@createCoupon');
 
-Route::middleware('api')->get('/auth/getqrcode', 'QRCodeController@getQRInfo');
+Route::middleware('api')->post('/auth/createbusiness', 'BusinessController@createBusiness');
