@@ -19,7 +19,7 @@ class CreateBusinessTable extends Migration
             $table->string('business_name');
             $table->string('address');
             $table->string('city');
-            $table->string('zip_code', 5);
+            $table->string('zipcode', 5);
             $table->string('state', 2);   
         });
     }

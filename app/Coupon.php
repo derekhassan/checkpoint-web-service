@@ -8,5 +8,5 @@ class Coupon extends Model
 {
     protected $table = 'coupons';
     protected $primaryKey = 'id';
-    public $timestamps = false;
+    public $timestamps = true;
 }

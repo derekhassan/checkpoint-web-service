@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Coupon;
 
 class CouponController extends Controller
@@ -24,8 +25,44 @@ class CouponController extends Controller
         // ];
 
     }
+
+    public function createCoupon() {
+        
+        $percentage = request()->input("percentage");
+        $cap = request()->input("cap");
+        $businessID = request()->input("businessID");
+
+        $validator = Validator::make(request()->all(), [
+            'percentage' => 'required',
+            'cap' => 'required',
+            'businessID' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+
+            return [
+                "status"=> 0,
+                "message"=> $validator->errors()->first()
+            ];
+        } else {
+            $coupon = new Coupon;
+
+            $coupon->percentage = $percentage;
+            $coupon->percentage_cap = $cap;
+            $coupon->bus_id = $businessID;
+
+            $coupon->save();
     
-    public function store(Request $request)
+            return [
+                "status"=> 201,
+                "message"=> "Coupon Created"
+            ];
+        }
+
+
+    }
+    
+    public function store(Request $request) //done through website
     {
 
         $this->validate($request, [

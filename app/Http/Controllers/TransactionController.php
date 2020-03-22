@@ -12,12 +12,12 @@ class TransactionController extends Controller
         
         $userShared = request()->input("userShared");
         $userReceived = request()->input("userReceived");
-        $qrID = request()->input("qrID");
+        $couponID = request()->input("couponID");
 
         $validator = Validator::make(request()->all(), [
             'userShared' => 'required',
             'userReceived' => 'required',
-            'qrID' => 'required',
+            'couponID' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -31,7 +31,7 @@ class TransactionController extends Controller
 
             $transaction->user_shared_id = $userShared;
             $transaction->user_received_id = $userReceived;
-            $transaction->qr_id = $qrID;
+            $transaction->coupon_id = $couponID;
     
             $transaction->save();
     
@@ -41,5 +41,27 @@ class TransactionController extends Controller
             ];
         }
 
+    }
+    public function findTransaction() {
+        $userShared = request()->input("userShared");
+        $userReceived = request()->input("userReceived");
+        //$couponID = request()->input("couponId"); 
+        
+        if (Transaction::where('user_shared_id', $userShared)->
+        where('user_received_id', $userReceived)
+        // where('coupon_id', $couponID)
+        ->first())
+        {
+            return [
+                "status"=> 1,
+                "message"=> "Transaction Found!"
+            ];
+
+        } else {
+            return [
+                "status"=> 0,
+                "message"=> "Transaction not Found!"
+            ];
+        }
     }
 }
