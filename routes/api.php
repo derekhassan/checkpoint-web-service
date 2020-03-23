@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/authlogin', 'AuthController@login');
+Route::post('/authregister', 'AuthController@register');
+Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
+
 Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
 //This is located in app/Http/Controllers
 
