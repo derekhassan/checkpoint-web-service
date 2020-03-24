@@ -13,28 +13,39 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+// These are the routes that require a token
+Route::middleware('auth:api')->group(function() {
+
+    //default Laravel route to return user
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    //logout and destroys user tokens
+    Route::post('/logout', 'AuthController@logout');
+
+    //Creates a new transaction
+    Route::post('/transaction', 'TransactionController@createTransaction');
+
+    //Finds a transaction by user_id_shared and user_received
+    Route::get('/transaction', 'TransactionController@findTransaction');
+
 });
 
+//New routes that use oauth
 Route::post('/authlogin', 'AuthController@login');
 Route::post('/authregister', 'AuthController@register');
-Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
 
+
+//Legacy login system
+//Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
 Route::middleware('api')->post('/auth/login', 'LoginAPIController@postLogin');
-//This is located in app/Http/Controllers
-
-Route::middleware('api')->get('/test', 'LoginAPIController@makeAccount');
-//Makes test account
-
-Route::middleware('api')->post('/auth/createtransaction', 'TransactionController@createTransaction');
-Route::middleware('api')->get('/auth/findtransaction', 'TransactionController@findTransaction');
-
 Route::middleware('api')->post('/auth/signup', 'LoginAPIController@postSignup');
 Route::middleware('api')->get('/auth/getuser', 'LoginAPIController@getUserbyId');
 
-Route::middleware('api')->get('/auth/makeqrcode', 'CouponController@makeQRCode');
-Route::middleware('api')->get('/auth/getqrcode', 'CouponController@getQRInfo');
-Route::middleware('api')->post('/auth/createcoupon', 'CouponController@createCoupon');
+//Route::middleware('api')->get('/auth/makeqrcode', 'CouponController@makeQRCode');
+Route::middleware('api')->get('/coupon', 'CouponController@getQRInfo');
+Route::middleware('api')->post('/coupon', 'CouponController@createCoupon');
 
-Route::middleware('api')->post('/auth/createbusiness', 'BusinessController@createBusiness');
+Route::middleware('api')->post('/createbusiness', 'BusinessController@createBusiness');
