@@ -34,7 +34,7 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form> --}}
 
-            {!! Form::open(['action' => 'QRCodeController@store', 'method' => 'POST']) !!}
+            {!! Form::open(['action' => 'CouponController@store', 'method' => 'POST']) !!}
                 <div class="form-group">
                     {{Form::label('title', 'The initial percentage is:')}}
                     {{Form::number('percentage','', ['class' => 'form-control'])}}

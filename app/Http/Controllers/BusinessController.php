@@ -48,4 +48,14 @@ class BusinessController extends Controller
 
     }
 
+    public function index() {
+        $businesses = Business::get()->sortBy('created_at');
+        return view('businesses.index')->with('businesses', $businesses);
+    }
+
+    public function find($id) {
+        $business = Business::find($id);
+        return with('business', $business);
+    }
+
 }

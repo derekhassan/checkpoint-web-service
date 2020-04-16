@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Coupon;
+use App\Business;
 
 class CouponController extends Controller
 {
@@ -79,6 +80,11 @@ class CouponController extends Controller
 
         return redirect('/createcoupon')->with('success', 'Coupon Created');
 
+    }
+    public function index() 
+    {
+        $coupons = Coupon::with('business')->get();
+        return view('coupons.index')->with('coupons', $coupons);
     }
 
     public function getQRInfo()
