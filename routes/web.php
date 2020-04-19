@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/createcoupon', 'PagesController@createcoupon');
+Route::get('/createbusiness', 'PagesController@createbusiness');
 
 //might need to fix web route
 Route::resource('coupon', 'CouponController'); //can now reference functions like qrcode.store

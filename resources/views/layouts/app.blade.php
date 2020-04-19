@@ -17,6 +17,10 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
+
+        @include('inc.navbar')
+        
+        @include('inc.messages')
         @yield('content')
     </body>
 </html>

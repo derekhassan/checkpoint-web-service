@@ -48,6 +48,30 @@ class BusinessController extends Controller
 
     }
 
+    public function store(Request $request) //done through website
+    {
+
+        $this->validate($request, [
+            'business_name' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'zipcode' => 'required',
+            'state' => 'required',
+        ]);
+
+        $business = new Business;
+        $business->business_name = $request->input('business_name');
+        $business->address = $request->input('address');
+        $business->city = $request->input('city');
+        $business->zipcode = $request->input('zipcode');
+        $business->state = $request->input('state');
+
+        $business->save();
+
+        return redirect('/createbusiness')->with('success', 'Coupon Created');
+
+    }
+
     public function index() {
         $businesses = Business::get()->sortBy('created_at');
         return view('businesses.index')->with('businesses', $businesses);

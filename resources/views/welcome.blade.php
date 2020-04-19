@@ -52,7 +52,7 @@
             </div>
 
             <div class="col-12 col-md-6">
-              <a href="/createcoupon" class="text-dark">
+              <a href="/createbusiness" class="text-dark">
               <div class="card mb-4 box-shadow">
 
                 <div class="card-body text-center">

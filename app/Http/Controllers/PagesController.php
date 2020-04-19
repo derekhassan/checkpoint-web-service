@@ -8,6 +8,10 @@ class PagesController extends Controller
 {
     public function createcoupon(){
         $title = 'New Coupon';
-        return view('createcoupon')->with('title', $title);
+        return view('coupons.createcoupon')->with('title', $title);
+    }
+    public function createbusiness(){
+        $title = 'New Business';
+        return view('businesses.createbusiness')->with('title', $title);
     }
 }
