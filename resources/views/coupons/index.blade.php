@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('dashboard')
 @section('coupon_table')
 
 <div class="row">
@@ -23,6 +23,14 @@
                     <h4>Created: {{$coupon->created_at}}</h4>
                     <h4>Initial Percentage: {{$coupon->percentage}}%</h4>
                     <h4>Percentage Cap: {{$coupon->percentage_cap}}%</h4>
+
+                    <a href="coupon/{{$coupon->id}}/edit" class="btn btn-light">Edit</a>
+
+                    {!!Form::open(['action' => ['CouponController@destroy', $coupon->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                      {{Form::hidden('_method', 'DELETE')}}
+                      {{Form::submit('Delete', ['class' => 'btn btn-light'])}}
+                    {!!Form::close() !!}
+
                 </div>
               </div>
             @endforeach

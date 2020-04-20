@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('dashboard')
 @section('business_table')
 
 <div class="row">
@@ -26,6 +26,14 @@
                     <h2 class="card-title">Business Name: {{$business->business_name}}</h2>
                     <h4>Created: {{$business->created_at}}</h4>
                     <h5>Address: {{$business->address}} {{$business->city}}, {{$business->state}} {{$business->zipcode}}</h5>
+
+                <a href="business/{{$business->id}}/edit" class="btn btn-light">Edit</a>
+
+                {!!Form::open(['action' => ['BusinessController@destroy', $business->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                  {{Form::hidden('_method', 'DELETE')}}
+                  {{Form::submit('Delete', ['class' => 'btn btn-light'])}}
+                {!!Form::close() !!}
+
                 </div>
               </div>
             @endforeach
