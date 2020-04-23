@@ -15,7 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/createcoupon', 'PagesController@createcoupon');
+Route::get('/createbusiness', 'PagesController@createbusiness');
+
+
+// Route::get('/login', ['as' => 'login', 'uses' => 'PagesController@login']);
+// Route::get('/register', ['as' => 'register', 'uses' => 'PagesController@register']);
 
 //might need to fix web route
 Route::resource('coupon', 'CouponController'); //can now reference functions like qrcode.store
+Route::resource('business', 'BusinessController'); //can now reference functions like qrcode.store

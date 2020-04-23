@@ -9,4 +9,9 @@ class Business extends Model
     protected $table = 'business';
     protected $primaryKey = 'id';
     public $timestamps = true;
+
+    public function coupons() {
+        return $this->hasMany('App\Coupon', 'bus_id');
+    }
+
 }
